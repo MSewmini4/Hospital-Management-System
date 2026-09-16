@@ -55,7 +55,7 @@ int main(void)
             break;
 
         case 4:
-            displayPatientsByPriority();
+            displaypatientsByPriority();
             break;
 
         case 5:
@@ -68,7 +68,7 @@ int main(void)
                 printf("\nEnter patient ID: ");
                 scanf("%19s",id);
 
-                index=findPatientBy(id);
+                index=findPatientById(id);
 
                 if(index==-1)
                 {
@@ -77,13 +77,13 @@ int main(void)
                 }
                 else
                 {
-                    printfPatientBill(index);
+                    printPatientBill(index);
                 }
             }
             break;
 
         case 6:
-            generateReports();
+            generatereports();
             break;
 
         case 7:
@@ -93,7 +93,7 @@ int main(void)
         case 8:
             saveData();
 
-                printf("\nThank you fod using Smart Hospital System.\n");
+                printf("\nThank you for using Smart Hospital System.\n");
 
                 break;
 
