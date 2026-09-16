@@ -2,7 +2,7 @@
 #include<string.h>
 #include "hospital.h"
 
-const char *specialtyName[SPECIALTIES]=
+const char *specialtyNames[SPECIALTIES]=
 {
     "General practice(OPD)",
     "Paediatrics",
@@ -468,7 +468,7 @@ void printPatientBill(int i)
 
     printf("Consultation Fee : LKR %.2f\n",patientBaseFee[i]);
 
-    printf("Emergency Charge : LKR %.2f\n",patientSurcharge[i]);
+    printf("Emergency Charge : LKR %.2f\n",patientSurchage[i]);
 
     printf("Ward Cost        : LKR %.2f\n",patientWardCost[i]);
 
@@ -483,6 +483,54 @@ void printPatientBill(int i)
     printf("Waiting Time     : %.2f minutes\n",patientWait[i]);
 
     printf("===============================================\n");
+
+}
+
+void displaypatientsByPriority(void)
+{
+    int order[MAX_PATIENTS];
+    int i;
+    int j;
+    int temp;
+
+    if(patientCount==0)
+    {
+        printf("\nNo patients registered.\n");
+        return;
+    }
+
+    for(i=0;i<patientCount;i++)
+    {
+        order[i]=i;
+
+    }
+
+    for(i=0;i<patientCount-1;i++)
+    {
+        for(j=0;j<patientCount-1;j++)
+        {
+            if(patientUrgency[order[j]]<patientUrgency[order[j+1]])
+            {
+                temp=order[j];
+                order[j]=order[j+1];
+                order[j+1]=temp;
+            }
+        }
+
+    }
+
+    printf("\n------------- PATIENT PRIORITY -------------\n");
+
+    printf("%-5s %-10s %-20s %10s %-25s %-12s\n","No","ID","Name","Urgency","Specialty","Final Bill");
+
+    for(i=0;i<patientCount;i++)
+    {
+        int p=order[i];
+
+        printf("%-5d %-10s %-20s %-10d %-25s %.2f\n",i+1,patientId[p],patientName[p],patientUrgency[p],specialtyNames[patientSpecialty[p]],patientFinal[p]);
+
+
+    }
 
 }
 
