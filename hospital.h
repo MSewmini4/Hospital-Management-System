@@ -15,7 +15,7 @@ extern const int specialtyCaps[SPECIALTIES];
 
 extern const char *wardNames[MAX_WARDS];
 extern const double wardRates[MAX_WARDS];
-extern const int wardCapaities[MAX_WARDS];
+extern const int wardCapacities[MAX_WARDS];
 
 extern int bedOccupancy[MAX_WARDS][MAX_BEDS];
 extern int patientCount;
