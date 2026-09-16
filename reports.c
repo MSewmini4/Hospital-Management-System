@@ -62,7 +62,7 @@ void generatereports(void)
     {
         printf("\n-------------HIGHEST BILL ------------------\n");
         printf("Patient Name : %s\n",patientName[highestIndex]);
-        printf("Patient ID   : %s\n",patientId[highestIndex]);
+        printf("Patient ID   : %s\n",patientID[highestIndex]);
         printf("Final Bill   : LKR %.2f\n",patientFinal[highestIndex]);
 
     }
