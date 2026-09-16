@@ -63,7 +63,7 @@ const int wardCapacities[MAX_WARDS]=
 int bedOccupancy[MAX_WARDS][MAX_BEDS];
 int patientCount=0;
 
-char patientId[MAX_PATIENTS][MAX_ID];
+char patientID[MAX_PATIENTS][MAX_ID];
 char patientName[MAX_PATIENTS][MAX_NAME];
 
 int patientAge[MAX_PATIENTS];
@@ -287,21 +287,21 @@ if(patientCount>=MAX_PATIENTS)
 
 i=patientCount;
 
-printf(patientId[i],"PAT-%04d",1001+i);
+sprintf(patientID[i],"PAT-%04d",1001+i);
 
 
 printf("\n===============================================\n");
 printf("          PATIENT REGISTRATION\n");
 printf("===============================================\n");
 
-printf("Patient ID:%s\n",patientId[i]);
+printf("Patient ID: %s\n",patientID[i]);
 
-printf("Enter patient name:");
-scanf("%99[^\n]",patientName[i]);
+printf("Enter patient name: ");
+scanf(" %99[^\n]",patientName[i]);
 
        do
 {
-    printf("Enter patient age(0-120):");
+    printf("Enter patient age(0-120): ");
     scanf("%d",&patientAge[i]);
 
 }
@@ -409,6 +409,7 @@ patientSpecialty[i]=specialty-1;
         }
 
 
+
 wait=calculateWaitingTime(patientSpecialty[i]);
 
 patientWait[i]=(double)wait;
@@ -445,7 +446,7 @@ void printPatientBill(int i)
     printf("        SMART HOSPITAL PATIENT BILL\n");
     printf("===============================================\n");
 
-    printf("Patient ID      : %s\n",patientId[i]);
+    printf("Patient ID      : %s\n",patientID[i]);
     printf("Patient Name    : %s\n",patientName[i]);
     printf("Age             : %d\n",patientAge[i]);
     printf("Specialty       : %s\n",specialtyNames[patientSpecialty[i]]);
@@ -521,13 +522,13 @@ void displaypatientsByPriority(void)
 
     printf("\n------------- PATIENT PRIORITY -------------\n");
 
-    printf("%-5s %-10s %-20s %10s %-25s %-12s\n","No","ID","Name","Urgency","Specialty","Final Bill");
+    printf("%-5s %-10s %-20s %-10s %-25s %-12s\n","No","ID","Name","Urgency","Specialty","Final Bill");
 
     for(i=0;i<patientCount;i++)
     {
         int p=order[i];
 
-        printf("%-5d %-10s %-20s %-10d %-25s %.2f\n",i+1,patientId[p],patientName[p],patientUrgency[p],specialtyNames[patientSpecialty[p]],patientFinal[p]);
+        printf("%-5d %-10s %-20s %-10d %-25s %.2f\n",i+1,patientID[p],patientName[p],patientUrgency[p],specialtyNames[patientSpecialty[p]],patientFinal[p]);
 
 
     }
