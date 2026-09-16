@@ -433,4 +433,59 @@ printPatientBill(i);
 
 }
 
+void printPatientBill(int i)
+{
+    if(i<0||i>=patientCount)
+    {
+        printf("Invalid patient.\n");
+        return;
+    }
+
+    printf("\n===============================================\n");
+    printf("        SMART HOSPITAL PATIENT BILL\n");
+    printf("===============================================\n");
+
+    printf("Patient ID      : %s\n",patientId[i]);
+    printf("Patient Name    : %s\n",patientName[i]);
+    printf("Age             : %d\n",patientAge[i]);
+    printf("Specialty       : %s\n",specialtyNames[patientSpecialty[i]]);
+    printf("Urgency         : %s\n",urgencyText(patientUrgency[i]));
+
+    if(patientAdmitted[i])
+    {
+        printf("Ward        : %s\n",wardNames[patientWard[i]]);
+        printf("Bed Number  : %d\n",patientBed[i]+1);
+        printf("Days        : %d\n",patientDays[i]);
+
+    }
+
+    else
+    {
+        printf("Ward        : OPD/out patient\n");
+    }
+
+    printf("-----------------------------------------------\n");
+
+    printf("Consultation Fee : LKR %.2f\n",patientBaseFee[i]);
+
+    printf("Emergency Charge : LKR %.2f\n",patientSurcharge[i]);
+
+    printf("Ward Cost        : LKR %.2f\n",patientWardCost[i]);
+
+    printf("-----------------------------------------------\n");
+
+    printf("Gross Total      : LKR %.2f\n",patientGross[i]);
+
+    printf("Age Discount     : LKR %.2f\n",patientDiscount[i]);
+
+    printf("Final Amount     : LKR %.2f\n",patientFinal[i]);
+
+    printf("Waiting Time     : %.2f minutes\n",patientWait[i]);
+
+    printf("===============================================\n");
+
+}
+
+
+
 
