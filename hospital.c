@@ -231,6 +231,15 @@ double calculateEmergencySurcharge(double baseFee,int urgencyLevel)
     return 0;
 }
 
+double calculateWardCost(int wardIndex,int days)
+{
+    if(wardIndex<0||wardIndex>=MAX_WARDS||days<=0)
+    {
+        return 0.0;
+    }
+
+    return wardRates[wardIndex]*days;
+}
 
 double calculateAgeDiscount(double gross,int age)
 {
@@ -400,5 +409,28 @@ patientSpecialty[i]=specialty-1;
         }
 
 
+wait=calculateWaitingTime(patientSpecialty[i]);
+
+patientWait[i]=(double)wait;
+
+patientBaseFee[i]=specialtyFees[patientSpecialty[i]];
+
+patientSurchage[i]=calculateEmergencySurcharge(patientBaseFee[i],patientUrgency[i]);
+
+patientWardCost[i]=calculateWardCost(patientWard[i],patientDays[i]);
+
+patientGross[i]=patientBaseFee[i]+patientSurchage[i]+patientWardCost[i];
+
+patientDiscount[i]=calculateAgeDiscount(patientGross[i],patientAge[i]);
+
+patientFinal[i]=patientGross[i]-patientDiscount[i];
+
+patientCount++;
+
+printf("\nPatient registered successfully!\\n");
+
+printPatientBill(i);
+
+}
 
 
