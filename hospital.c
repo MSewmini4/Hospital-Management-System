@@ -41,7 +41,7 @@ const char *wardNames[MAX_WARDS]=
     "General Ward",
     "Paediatric Ward",
     "Surgical Ward",
-    "ICU(Intensive Carre Unit)"
+    "ICU(Intensive Care Unit)"
 };
 
 const double wardRates[MAX_WARDS]=
@@ -123,7 +123,7 @@ void displayMainMenu(void)
 void displayLookupTables(void)
 {
     int i;
-    printf("\n-------------DOCTOR SPECIALTIES------------\n");
+    printf("\n------------------------DOCTOR SPECIALTIES-----------------------\n");
 
     printf("%-4s %-28s %-12s %-10s %-10s\n",
            "ID","Specialty","Fee","Minutes","Capacity");
@@ -138,7 +138,7 @@ void displayLookupTables(void)
                specialtyCaps[i]);
     }
 
-    printf("\n------------------WARDS --------------------\n");
+    printf("\n-----------------------------WARDS-------------------------------\n");
 
     printf("%-4s %-30s %-15s %-10s \n",
            "ID","Ward","Daily Rate","Capacity");
@@ -226,9 +226,9 @@ double calculateEmergencySurcharge(double baseFee,int urgencyLevel)
 
     if(urgencyLevel==3)
     {
-        return baseFee*0.30;
+        return baseFee*0.50;
     }
-    return 0;
+    return 0.0;
 }
 
 double calculateWardCost(int wardIndex,int days)
@@ -446,17 +446,17 @@ void printPatientBill(int i)
     printf("        SMART HOSPITAL PATIENT BILL\n");
     printf("===============================================\n");
 
-    printf("Patient ID      : %s\n",patientID[i]);
-    printf("Patient Name    : %s\n",patientName[i]);
-    printf("Age             : %d\n",patientAge[i]);
-    printf("Specialty       : %s\n",specialtyNames[patientSpecialty[i]]);
-    printf("Urgency         : %s\n",urgencyText(patientUrgency[i]));
+    printf("Patient ID       : %s\n",patientID[i]);
+    printf("Patient Name     : %s\n",patientName[i]);
+    printf("Age              : %d\n",patientAge[i]);
+    printf("Specialty        : %s\n",specialtyNames[patientSpecialty[i]]);
+    printf("Urgency          : %s\n",urgencyText(patientUrgency[i]));
 
     if(patientAdmitted[i])
     {
-        printf("Ward        : %s\n",wardNames[patientWard[i]]);
-        printf("Bed Number  : %d\n",patientBed[i]+1);
-        printf("Days        : %d\n",patientDays[i]);
+        printf("Ward             : %s\n",wardNames[patientWard[i]]);
+        printf("Bed Number       : %d\n",patientBed[i]+1);
+        printf("Days             : %d\n",patientDays[i]);
 
     }
 
